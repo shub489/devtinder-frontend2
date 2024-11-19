@@ -1,15 +1,16 @@
 import axios from 'axios'
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { addUser, removeUser } from "../redux/userSlice.js"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Login = () => {
 
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const user = useSelector((store) => store.user)
 
   const [data, setData] = useState({
     email: "shubham@gmail.com",
@@ -42,7 +43,7 @@ const Login = () => {
         });
         console.log(response)
         dispatch(addUser(response.data.user))
-        // return navigate("/")
+        return navigate("/")
 
       }
     } catch (error) {
@@ -60,6 +61,14 @@ const Login = () => {
     }
   }
 
+  console.log("test")
+
+  useEffect(() => {
+    console.log("response in login ", user)
+    if (user) {
+      navigate("/")
+    }
+  }, [user])
 
 
 
@@ -72,6 +81,8 @@ const Login = () => {
         onSubmit={handleLogin}
       >
 
+        {/* Heading */}
+        <h2 className=' text-center font-bold text-3xl'>LOGIN</h2>
 
 
         {/* Email */}
@@ -121,9 +132,7 @@ const Login = () => {
         {/* <button className='w-6/12 mx-auto font-bold text-2xl border rounded-md py-1'>Submit</button> */}
         <button className="btn btn-neutral text-2xl">Submit</button>
 
-        <h2 className=' text-center font-bold text-3xl'>LOGIN</h2>
       </form>
-
 
     </div>
   )
