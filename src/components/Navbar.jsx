@@ -11,40 +11,8 @@ const Navbar = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-
-  useEffect(() => {
-    // If user is not there
-    if (!user) {
-      console.log("calling from navar api call")
-      async function fetchUser() {
-        try {
-          const response = await axios.get("http://localhost:4000/profile", { withCredentials: true })
-          console.log("response in navbar ", response)
-          if (!response.data.success) {
-            toast.error('Cannot fetch details!', {
-              position: "top-center",
-              autoClose: 2500,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
-            return
-          }
-          dispatch(addUser(response.data.user))
-        } catch (error) {
-          navigate("/login")
-        }
-      }
-      fetchUser()
-    }
-  }, [])
-
   async function handleLogout() {
     const response = await axios.post("http://localhost:4000/logout", {}, { withCredentials: true })
-    console.log(response)
     if (!response.data.success) {
       toast.error('Unable to logout!', {
         position: "top-center",

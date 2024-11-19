@@ -41,13 +41,11 @@ const Login = () => {
           progress: undefined,
           theme: "light",
         });
-        console.log(response)
         dispatch(addUser(response.data.user))
         return navigate("/")
 
       }
     } catch (error) {
-      console.log(error)
       toast.error("Login failed! ", {
         position: "top-center",
         autoClose: 2500,
@@ -61,10 +59,8 @@ const Login = () => {
     }
   }
 
-  console.log("test")
 
   useEffect(() => {
-    console.log("response in login ", user)
     if (user) {
       navigate("/")
     }
