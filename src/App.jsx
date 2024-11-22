@@ -16,7 +16,8 @@ const App = () => {
         <Route path='/' element={<Layout />}>
           <Route index element={<Feed />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<ProtectedRoutes><Profile /></ProtectedRoutes>} />
+          {/* <Route path="/profile" element={<ProtectedRoutes><Profile /></ProtectedRoutes>} /> */}
+          <Route path="/profile" element={<Profile />} />
           <Route path="connections" element={<ProtectedRoutes><Connections /></ProtectedRoutes>} />
           <Route path="*" element={<NoPage />} />
         </Route>

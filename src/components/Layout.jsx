@@ -11,9 +11,9 @@ const Layout = () => {
   const user = useSelector((store) => store.user)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
   useEffect(() => {
     try {
+      console.log("Laylout useeffect called!!!")
       async function fetchProfile() {
         try {
           const response = await axios.get("http://localhost:4000/profile", { withCredentials: true })
@@ -32,10 +32,10 @@ const Layout = () => {
 
 
   return (
-    <div>
+    <div >
       <Navbar />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

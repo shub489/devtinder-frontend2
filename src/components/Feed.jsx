@@ -15,7 +15,6 @@ const Feed = () => {
 
 
   async function getFeed() {
-    console.log("called.....", feed)
     if (!feed) {
       const response = await axios.get("http://localhost:4000/user/feed", { withCredentials: true })
       dispatch(addFeed(response.data.feedUsers))
@@ -38,6 +37,7 @@ const Feed = () => {
       {
         feed && feed.map((feedUser) => {
           return <FeedCard
+            key={feedUser._id}
             feedUser={feedUser}
           />
         })
