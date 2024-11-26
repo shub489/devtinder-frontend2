@@ -7,6 +7,7 @@ import Connections from "./components/Connections.jsx"
 import NoPage from "./components/NoPage.jsx"
 import ProtectedRoutes from './components/ProtectedRoutes.jsx'
 import Profile from './components/Profile.jsx'
+import Requests from './components/Requests.jsx'
 
 
 const App = () => {
@@ -18,7 +19,9 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           {/* <Route path="/profile" element={<ProtectedRoutes><Profile /></ProtectedRoutes>} /> */}
           <Route path="/profile" element={<Profile />} />
-          <Route path="connections" element={<ProtectedRoutes><Connections /></ProtectedRoutes>} />
+          {/* <Route path="connections" element={<ProtectedRoutes><Connections /></ProtectedRoutes>} /> */}
+          <Route path="connections" element={<Connections />} />
+          <Route path="requests" element={<Requests />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

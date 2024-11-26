@@ -1,7 +1,7 @@
 import React from 'react'
 
 const FeedCard = ({ feedUser }) => {
-  const { firstName, lastName, photoUrl, about, age, gender } = feedUser
+  const { firstName, lastName, photoUrl, about, age, gender, showIgnoreInterestedButton } = feedUser
   return (
     <div className="card bg-base-300 w-96 shadow-xl ">
       <figure>
@@ -20,10 +20,13 @@ const FeedCard = ({ feedUser }) => {
         </div>
         <p className='text-wrap'>{about}</p>
 
-        <div className="card-actions justify-between">
-          <button className="btn btn-primary bg-red-500">Ignore</button>
-          <button className="btn btn-primary bg-green-500">Interested</button>
-        </div>
+        {
+          showIgnoreInterestedButton &&
+          <div className="card-actions justify-between">
+            <button className="btn btn-primary bg-red-500">Ignore</button>
+            <button className="btn btn-primary bg-green-500">Interested</button>
+          </div>
+        }
       </div>
     </div>
   )

@@ -8,6 +8,7 @@ const ProtectedRoutes = ({ children }) => {
   const navigate = useNavigate()
 
   useEffect(() => {
+    console.log("user protected ", user)
     if (!user) {
       navigate("/login")
     }

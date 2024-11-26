@@ -44,6 +44,10 @@ const Profile = () => {
       setAbout(e.target.value)
       return
     }
+
+    if (e.target.name === "photoUrl") {
+      setPhotoUrl(e.target.value)
+    }
   }
 
   useEffect(() => {
@@ -65,7 +69,7 @@ const Profile = () => {
       setIsUpdating(true)
       const response = await axios.patch(
         "http://localhost:4000/profile/edit",
-        { firstName, lastName, age, gender, about },
+        { firstName, lastName, age, gender, about, photoUrl },
         { withCredentials: true }
       )
       setIsUpdating(false)
@@ -106,9 +110,11 @@ const Profile = () => {
   }
 
   return (
-    <div className=' flex justify-evenly mt-4 '>
+    // <div className=' flex justify-evenly mt-4 '>
+    <div className='flex flex-col md:flex-row justify-evenly mt-4'>
       {/* PROFILE */}
-      <div className=' w-3/12 bg-base-300 flex flex-col gap-3 p-4'>
+      {/* <div className=' w-3/12 bg-base-300 flex flex-col gap-3 p-4'> */}
+      <div className='w-full md:w-3/12 bg-base-300 flex flex-col gap-3 p-4'>
         <label className="input input-bordered flex items-center gap-2">
           Firstname
           <input
@@ -145,17 +151,19 @@ const Profile = () => {
           />
         </label>
 
-        {/* <label className="input input-bordered flex items-center gap-2">
-          Gender
+
+
+        <label className="input input-bordered flex items-center gap-2">
+          Profile Pic
           <input
             type="text"
             className="grow"
-            placeholder="Gender"
-            name='gender'
-            value={gender}
+            placeholder="Profile Pic"
+            name='photoUrl'
+            value={photoUrl}
             onChange={(e) => handleChange(e)}
           />
-        </label> */}
+        </label>
 
         <select
           className="select select-primary w-full max-w-xs"

@@ -32,13 +32,13 @@ const Feed = () => {
   }, [user])
 
   return (
-    <div className=' flex justify-between flex-wrap gap-y-16 p-6'>
+    <div className=' flex justify-between flex-wrap gap-y-16 p-6 mb-24'>
 
       {
         feed && feed.map((feedUser) => {
           return <FeedCard
             key={feedUser._id}
-            feedUser={feedUser}
+            feedUser={{ ...feedUser, showIgnoreInterestedButton: true }}
           />
         })
       }
