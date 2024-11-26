@@ -16,8 +16,7 @@ const Connections = () => {
       setLoading(true)
       try {
         const response = await axios.get("http://localhost:4000/user/connections", { withCredentials: true })
-        console.log(response)
-        console.log(response.data.status)
+
         if (!response.data.status) {
           console.log("Some error occur while fetching connections")
           return
