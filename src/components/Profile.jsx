@@ -114,7 +114,7 @@ const Profile = () => {
     <div className='flex flex-col md:flex-row justify-evenly mt-4'>
       {/* PROFILE */}
       {/* <div className=' w-3/12 bg-base-300 flex flex-col gap-3 p-4'> */}
-      <div className='w-full md:w-3/12 bg-base-300 flex flex-col gap-3 p-4'>
+      <div className='w-full md:w-3/12 bg-base-300 flex flex-col gap-3 p-4 self-start'>
         <label className="input input-bordered flex items-center gap-2">
           Firstname
           <input

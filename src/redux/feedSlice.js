@@ -9,7 +9,10 @@ export const feedSlice = createSlice({
       return action.payload
     },
     removeUser: (state, action) => {
-      return null
+      console.log("action.payload._id: ", action.payload)
+      const newFeed = state.filter((f) => f._id !== action.payload)
+      console.log("newFeed: ", newFeed)
+      return newFeed
     }
   },
 })

@@ -11,7 +11,6 @@ const Layout = () => {
   const user = useSelector((store) => store.user)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  console.log("LAYOUT")
   useEffect(() => {
     try {
       async function fetchProfile() {

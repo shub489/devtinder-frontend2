@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, useFetcher, useNavigate } from 'react-router-dom'
 import { addFeed } from "../redux/feedSlice.js"
 import FeedCard from '../cards/FeedCard.jsx'
+import { toast } from 'react-toastify'
 
 
 const Feed = () => {
@@ -31,17 +32,26 @@ const Feed = () => {
     }
   }, [user])
 
-  return (
-    <div className=' flex justify-between flex-wrap gap-y-16 p-6 mb-24'>
+  if (!feed || !feed.length) {
+    return <h1>No feed found</h1>
+  }
 
-      {
+  return (
+    <div className=' flex justify-center mt-4'>
+
+
+      {feed && feed.length && <FeedCard
+        feedUser={{ ...feed[0], showIgnoreInterestedButton: true }}
+      />
+      }
+      {/* {
         feed && feed.map((feedUser) => {
           return <FeedCard
             key={feedUser._id}
             feedUser={{ ...feedUser, showIgnoreInterestedButton: true }}
           />
         })
-      }
+      } */}
       {/* <FeedCard /> */}
     </div>
   )
