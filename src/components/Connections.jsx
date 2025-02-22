@@ -41,7 +41,7 @@ const Connections = () => {
   }
 
   if (!connections.length) {
-    return <h1>No connections Found</h1>
+    return <h1 className='flex justify-center pt-[40vh]'>No connections Found</h1>
   }
 
   return (
