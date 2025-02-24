@@ -3,6 +3,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { removeUser } from '../redux/feedSlice.js'
 import { toast } from 'react-toastify'
+import {BASE_URL} from "../utils/constants.js"
 
 const FeedCard = ({ feedUser }) => {
   const { firstName, lastName, photoUrl, about, age, gender, showIgnoreInterestedButton, _id } = feedUser
@@ -10,7 +11,7 @@ const FeedCard = ({ feedUser }) => {
   async function handleSendRequest(status) {
     console.log(_id)
     try {
-      const response = await axios.post(`http://localhost:4000/request/send/${status}/${_id}`, {}, { withCredentials: true })
+      const response = await axios.post(`${BASE_URL}/request/send/${status}/${_id}`, {}, { withCredentials: true })
       dispatch(removeUser(_id))
       status === "interested" ? toast.success(`Request send succesfully 🎉`) : toast.warning("Ignored!!!")
     } catch (error) {

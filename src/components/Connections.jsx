@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import LoadingPage from './LoadingPage'
 import FeedCard from '../cards/FeedCard'
 import { setConnections } from '../redux/connectionsSlice'
+import { BASE_URL } from '../utils/constants'
 
 const Connections = () => {
   const connections = useSelector((store) => store.connections)
@@ -15,7 +16,7 @@ const Connections = () => {
     async function getConnections() {
       setLoading(true)
       try {
-        const response = await axios.get("http://localhost:4000/user/connections", { withCredentials: true })
+        const response = await axios.get(`${BASE_URL}/user/connections`, { withCredentials: true })
 
         if (!response.data.status) {
           console.log("Some error occur while fetching connections")

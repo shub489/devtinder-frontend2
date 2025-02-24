@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import { addUser, removeUser } from '../redux/userSlice'
 import { Link, useNavigate } from 'react-router-dom'
+import { BASE_URL } from '../utils/constants'
 
 const Navbar = () => {
 
@@ -12,7 +13,7 @@ const Navbar = () => {
   const navigate = useNavigate()
 
   async function handleLogout() {
-    const response = await axios.post("http://localhost:4000/logout", {}, { withCredentials: true })
+    const response = await axios.post(`${BASE_URL}/logout`, {}, { withCredentials: true })
     if (!response.data.success) {
       toast.error('Unable to logout!', {
         position: "top-center",

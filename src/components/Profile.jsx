@@ -5,6 +5,7 @@ import FeedCard from '../cards/FeedCard'
 import { toast } from 'react-toastify'
 import { addUser } from '../redux/userSlice'
 import LoadingPage from './LoadingPage'
+import { BASE_URL } from '../utils/constants'
 
 const Profile = () => {
 
@@ -68,12 +69,12 @@ const Profile = () => {
     try {
       setIsUpdating(true)
       const response = await axios.patch(
-        "http://localhost:4000/profile/edit",
+        `${BASE_URL}/profile/edit`,
         { firstName, lastName, age, gender, about, photoUrl },
         { withCredentials: true }
       )
       setIsUpdating(false)
-      const responseProfile = await axios.get("http://localhost:4000/profile", { withCredentials: true })
+      const responseProfile = await axios.get(`${BASE_URL}/profile`, { withCredentials: true })
       dispatch(addUser(responseProfile.data.user))
       toast.success('Profle Updated Successfully!', {
         position: "top-center",

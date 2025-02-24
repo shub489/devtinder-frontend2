@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { addUser, removeUser } from "../redux/userSlice.js"
 import { useDispatch, useSelector } from 'react-redux'
+import { BASE_URL } from '../utils/constants.js'
 
 const Login = () => {
 
@@ -33,7 +34,7 @@ const Login = () => {
     e.preventDefault()
     try {
       setIsLoading(true)
-      const response = await axios.post("http://localhost:4000/login", data, { withCredentials: true })
+      const response = await axios.post(`${BASE_URL}/login`, data, { withCredentials: true })
       if (response.data.success) {
         toast.success('Login succesfully!', {
           position: "top-center",
@@ -86,7 +87,7 @@ const Login = () => {
     // http://localhost:4000/signup
     try {
       setIsLoading(true)
-      const response = await axios.post("http://localhost:4000/signup", data, { withCredentials: true })
+      const response = await axios.post(`${BASE_URL}/signup`, data, { withCredentials: true })
       if (response.data.success) {
         toast.success('Signup succesfully!', {
           position: "top-center",

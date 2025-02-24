@@ -5,7 +5,7 @@ import { Navigate, useFetcher, useNavigate } from 'react-router-dom'
 import { addFeed } from "../redux/feedSlice.js"
 import FeedCard from '../cards/FeedCard.jsx'
 import { toast } from 'react-toastify'
-
+import { BASE_URL } from '../utils/constants.js'
 
 const Feed = () => {
 
@@ -17,7 +17,7 @@ const Feed = () => {
 
   async function getFeed() {
     if (!feed) {
-      const response = await axios.get("http://localhost:4000/user/feed", { withCredentials: true })
+      const response = await axios.get(`${BASE_URL}/user/feed`, { withCredentials: true })
       dispatch(addFeed(response.data.feedUsers))
     }
   }
