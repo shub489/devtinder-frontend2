@@ -6,6 +6,7 @@ import LoadingPage from './LoadingPage.jsx'
 import FeedCard from '../cards/FeedCard.jsx'
 import RequestCard from '../cards/RequestCard.jsx'
 import { ToastContainer, toast } from 'react-toastify';
+import { BASE_URL } from '../utils/constants.js'
 
 const Requests = () => {
 
@@ -16,7 +17,7 @@ const Requests = () => {
     async function getRequestsApiCall() {
       try {
         dispatch(setLoading(true))
-        const response = await axios.get("http://localhost:4000/user/requests", { withCredentials: true })
+        const response = await axios.get(`${BASE_URL}/user/requests`, { withCredentials: true })
 
         if (!response.data.success) {
           console.log("Cannot find all pending requests")
@@ -35,7 +36,7 @@ const Requests = () => {
 
   async function handleRequest(status, requestId) {
     try {
-      const response = await axios.post(`http://localhost:4000/request/review/${status}/${requestId}`, {}, { withCredentials: true })
+      const response = await axios.post(`${BASE_URL}/request/review/${status}/${requestId}`, {}, { withCredentials: true })
       dispatch(reviewRequest({ status, requestId }))
 
       toast.success(`Request ${status} succesfully 🎉`, {
