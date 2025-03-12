@@ -9,6 +9,10 @@ import ProtectedRoutes from './components/ProtectedRoutes.jsx'
 import Profile from './components/Profile.jsx'
 import Requests from './components/Requests.jsx'
 import Test from './components/Test.jsx'
+import CancellationRefundPolicy from './components/CancellationRefundPolicy.jsx'
+import Privacy from './components/Privacy.jsx'
+import Shipping from './components/Shipping.jsx'
+import TermAndConditions from './components/TermAndConditions.jsx'
 
 
 const App = () => {
@@ -24,6 +28,12 @@ const App = () => {
           <Route path="connections" element={<Connections />} />
           <Route path="requests" element={<Requests />} />
           <Route path="test" element={<Test />} />
+
+          <Route path="cancellation-policy" element={<CancellationRefundPolicy />} />
+          <Route path="privacy" element={<Privacy />} />
+          <Route path="shipping" element={<Shipping />} />
+          <Route path="termandconditions" element={<TermAndConditions />} />
+
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
